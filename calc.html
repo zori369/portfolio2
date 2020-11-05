@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Currency calculator</title>
+  <meta charset="utf-8">
+<link rel="stylesheet" href="calc.css">
+</head>
+<body>
+<div id="calc">
+<div id="name">
+<h1>Currency calculator</h1>
+</div>
+ <p id="quest">Please state the amount of money here:
+        <p id="hj">
+          <input id="billamt" type="text" placeholder="Money Amount">
+<form>
+  <p id="quest">Choose the initial currency:
+            <p>
+              <select id="firstV">
+            <option disabled selected value="0"> Choose an Option </option>
+            <option value="USD"> USD</option>
+            <option value="BGN"> BGN</option>
+            <option value="EUR"> EUR</option>
+            <option value="GBP">  GBP</option>
+        </select>
+    </form>
+<form>
+  <p id="quest">Choose the currency to convert to:
+            <p>
+              <select id="secondV">
+            <option disabled selected value="0"> Choose an Option </option>
+            <option value="USD"> USD</option>
+            <option value="BGN"> BGN</option>
+            <option value="EUR"> EUR</option>
+            <option value="GBP">  GBP</option>
+        </select>
+    </form>
+<button onclick="Add()">
+Convert
+</button>
+<p id="answer" style="color:white">= 
+<div/>
+<script>
+function Convert(a, b, c)
+{
+ if (b===c)
+  a = a;
+ else if (b=="USD")
+  {
+   if(c=="BGN")
+    a *= 1.64986;
+   else if(c=="EUR")
+    a *= 0.843478;
+   else if(c=="GBP")
+    a *= 0.763465;
+  }
+ else if (b=="BGN")
+  {
+   if(c=="USD")
+    a *= 0.606022;
+   else if(c=="EUR")
+    a *= 0.511292;
+   else if(c=="GBP")
+    a *= 0.462967;
+  }
+ else if (b=="EUR")
+  {
+   if(c=="USD")
+    a *= 1.18526;
+   else if(c=="BGN")
+    a *= 1.95583;
+   else if(c=="GBP")
+    a *= 0.905545;
+  }
+ else if (b=="GBP")
+  {
+   if(c=="USD")
+    a *= 1.30886;
+   else if(c=="BGN")
+    a *= 2.15974;
+   else if(c=="EUR")
+    a *= 1.10415;
+  }
+ return (Math.floor(a*100)/100);
+}
+function Add(){
+document.getElementById("answer").innerHTML= Convert(document.getElementById("billamt").value, document.getElementById("firstV").value, document.getElementById("secondV").value);
+}
+</script>
+</body>
+</html>
